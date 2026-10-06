@@ -3023,12 +3023,6 @@
   "zh-Hant": "本站使用流量分析（GoatCounter）。",
   "ko": "접속 분석(GoatCounter)을 사용하고 있어요."
  },
- "Instagram用": {
-  "en": "For Instagram",
-  "zh-Hans": "Instagram用",
-  "zh-Hant": "Instagram用",
-  "ko": "Instagram용"
- },
  "ストーリーズ用画像": {
   "en": "Story image",
   "zh-Hans": "快拍用图片",
@@ -3118,5 +3112,11 @@
   "zh-Hans": "你也来摆一盘吧！",
   "zh-Hant": "你也來擺一盤吧！",
   "ko": "당신도 담아 보세요!"
+ },
+ "Instagramに投稿": {
+  "en": "Post to Instagram",
+  "zh-Hans": "发到Instagram",
+  "zh-Hant": "發到Instagram",
+  "ko": "Instagram에 게시"
  }
 }
