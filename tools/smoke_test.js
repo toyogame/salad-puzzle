@@ -29,7 +29,7 @@ const ok = (name, cond, info = '') => { checks.push([name, !!cond, info]); };
   await p.goto(pageUrl()); await p.waitForTimeout(400);
 
   // 1) どのお題もお手本どおりに盛ればPERFECTになる
-  const solv = await p.evaluate(() => { let bad = 0, n = 0; for (let d = 1; d <= 60; d++) for (let s = 0; s < 3; s++) { const ch = getChallenge('2030-01-' + d, s), t = totals(ch.layout, ch.ref.dr); t.fill = coverageOf(ch.layout, ch.sig); n++; if (!scoreOf(ch, t).all) bad++; } return { n, bad }; });
+  const solv = await p.evaluate(() => { let bad = 0, n = 0; for (let d = 1; d <= 60; d++) for (let s = 0; s < 3; s++) { const ch = getChallenge('2030-01-' + d, s), t = totals(ch.layout, ch.ref.dr); useBowl(ch.bs); t.fill = coverageOf(ch.layout, ch.sig); useBowl(1); n++; if (!scoreOf(ch, t).all) bad++; } return { n, bad }; });
   ok('お題はすべて解ける', solv.bad === 0, JSON.stringify(solv));
   const hl = await p.evaluate(() => { let bad = 0; for (let d = 1; d <= 60; d++) for (let s = 0; s < 3; s++) { const ch = getChallenge('2030-02-' + (d % 28 + 1), s); if (healthMiss(ch.refT, ch.kind) > 0) bad++; } return bad; });
   ok('お題のお手本は健康的な範囲', hl === 0, 'NG ' + hl);
@@ -45,9 +45,10 @@ const ok = (name, cond, info = '') => { checks.push([name, !!cond, info]); };
   const it = await p.locator('#items .it').first().boundingBox(), bw = await p.locator('#bowl').boundingBox();
   await p.mouse.move(it.x + 20, it.y + 20); await p.mouse.down(); await p.mouse.move(bw.x + bw.width / 2, bw.y + bw.height / 2, { steps: 8 }); await p.mouse.up();
   ok('ドラッグで盛りつけ', await p.evaluate(() => G.pieces.length === 1));
-  await p.evaluate(() => { G.pieces = G.ch.layout.map(q => ({ ...q })); G.dressing = G.ch.ref.dr; G.strokes = G.ch.ref.dr && DMAP[G.ch.ref.dr].col ? [{ w: 1, pts: [30, 70, 130, 70] }, { w: 1, pts: [30, 85, 130, 85] }, { w: 1, pts: [60, 100, 100, 100] }] : []; /* お手本と同じ15g */ render(); });
+  await p.evaluate(() => { G.pieces = G.ch.layout.map(q => ({ ...q })); G.dressing = G.ch.ref.dr; G.strokes = []; if (G.ch.ref.dr && DMAP[G.ch.ref.dr].col) { let left = 240, y = 66; const h = BOWL.ri - 6; while (left > 0) { const L = Math.min(left, 2 * h); G.strokes.push({ w: 1, pts: [80 - L / 2, y, 80 + L / 2, y] }); left -= L; y += 6; } } /* お手本と同じ15g */ render(); });
   await p.click('#btnDone'); await p.waitForTimeout(600);
   ok('お手本でPERFECT', (await p.locator('#rRank').innerText()).includes('PERFECT'));
+  await p.click('#card'); await p.waitForTimeout(300); ok('画像タップで拡大', await p.evaluate(() => $('#lb').classList.contains('on'))); await p.evaluate(() => closeLb());
   ok('画像は2枚とも1080x1350', await p.evaluate(() => [$('#card').width, $('#card').height, $('#card2').width, $('#card2').height].join() === '1080,1350,1080,1350'));
   await p.click('#btnShare');
   ok('投稿文の1行目', (await p.locator('#shPrev').innerText()).startsWith('🥗サラダパズル'));

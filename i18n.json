@@ -2477,12 +2477,6 @@
   "zh-Hant": "無（點擊）",
   "ko": "없음(탭)"
  },
- "下の具材をボウルへドラッグして盛りつけよう": {
-  "en": "Drag ingredients from below into the bowl",
-  "zh-Hans": "把下面的食材拖进碗里吧",
-  "zh-Hant": "把下面的食材拖進碗裡吧",
-  "ko": "아래 재료를 볼로 드래그해서 담아 보세요"
- },
  "ドラッグで重なり順を変える": {
   "en": "Drag to change stacking order",
   "zh-Hans": "拖动以改变叠放顺序",
@@ -2944,5 +2938,11 @@
   "zh-Hans": "列表",
   "zh-Hant": "列表",
   "ko": "목록"
+ },
+ "下の具材をボウルへドラッグ": {
+  "en": "Drag ingredients into the bowl",
+  "zh-Hans": "把食材拖进碗里",
+  "zh-Hant": "把食材拖進碗裡",
+  "ko": "재료를 볼로 드래그"
  }
 }
