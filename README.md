@@ -95,8 +95,9 @@
 - 投稿文・オリジナルのお題のリンクは、日本語なら `https://toyogame.github.io/salad-puzzle/`、ほかの言語なら `…/en/`・`…/zh-hans/`・`…/zh-hant/`・`…/ko/`。言語別のURLはXなどのカード（タイトル・説明・画像）がその言語になる入口ページで、開くとすぐゲーム本体に移る（ゲームの言語は端末の設定で決まる）
 - 公開先が変わったら `index.html` の `GAME_URL` と `og:url`・`og:image`、`tools/lang_pages.py` の `SITE` を書きかえて、入口ページを作りなおす
 
-## アクセス解析（いまは無効）
-- 解析ツールのタグを `index.html` の `<!-- ANALYTICS -->` の位置に貼り、スクリプト内の `ANALYTICS={enabled:false}` を `true` にすると、ゲーム内のイベントが送られます
-- 対応：Google アナリティクス4（gtag）／Plausible／GoatCounter／Googleタグマネージャー（dataLayer）。貼ったものを自動で使います
-- 送るイベント：`app_open`／`challenge_start`／`challenge_finish`（お題・時間帯・むずかしさ・モード・点数・ランク・具材の種類数・ドレッシング）／`share_open`／`share_x`／`share_native`／`image_save`／`share_copy`／`tutorial_start`・`tutorial_done`・`tutorial_skip`／`ingredients`／`mode`／`custom_save`／`custom_share`／`custom_import`
-- 個人情報や投稿コメントの本文は送りません。解析を入れるときは、必要に応じてプライバシーについての表記も追加してください
+## アクセス解析（GoatCounter）
+- GoatCounter（https://toyogame.goatcounter.com）で計測。`index.html` の `<!-- ANALYTICS -->` のところにタグ、`ANALYTICS={enabled:true}` で有効。Cookie を使わないので同意バナーは不要。トップ画面の注意書きにも明記
+- ページの閲覧数（国・言語・端末・どこから来たか）は自動で数える。ゲーム内の操作は「イベント」として `event/…` のパスで記録（主な値はパスに入れる。例：`event/challenge_finish/normal/PERFECT`、`event/app_open/en`）
+- 送るイベント：`app_open`（言語）／`challenge_start`（時間帯・モード）／`challenge_finish`（モード・ランク）／`share_open`／`share_x`／`share_native`／`image_save`／`share_copy`／`tutorial_start`・`tutorial_done`・`tutorial_skip`／`ingredients`／`mode`／`lang`／`custom_save`／`custom_share`／`custom_import`
+- 個人情報や投稿コメントの本文は送りません。アーティファクト版（`build_artifact.py`）では解析を外します
+- ほかのサービス（Google アナリティクス4・Plausible・Googleタグマネージャー）に替える場合は、タグを差しかえるだけで `track()` がそのまま使えます

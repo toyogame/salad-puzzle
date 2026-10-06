@@ -10,6 +10,7 @@
   - 共有シート（navigator.share）は使えないので外す
   - 投稿文に入れるゲームのURLは本体と同じ（GitHub Pages）。--url で変えられる
   - ?unlock=1 は使えないので無効
+  - アクセス解析（GoatCounter）は外す
 """
 import argparse, pathlib, re, sys
 
@@ -58,6 +59,9 @@ async function saveImages(list){
     a, b = s.index('// NATIVE-SHARE-START'), s.index('// NATIVE-SHARE-END')
     s = s[:a] + 'function canNative(){return false;}   // アーティファクトでは共有シートが使えない\n' + s[b:]
     rep('const UNLOCK = /[?&]unlock=1/.test(location.search);', 'const UNLOCK = false;')
+    # アクセス解析は GitHub Pages 版だけ（アーティファクトでは外部のスクリプトを読めない）
+    s = re.sub(r'<script data-goatcounter=[^>]*></script>\s*', '', s)
+    s = s.replace('const ANALYTICS={enabled:true};', 'const ANALYTICS={enabled:false};', 1)
     assert 'navigator.share' not in s
     return s
 

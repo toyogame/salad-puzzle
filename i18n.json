@@ -3010,5 +3010,17 @@
   "zh-Hans": "早·午·晚都有新题目",
   "zh-Hant": "早·午·晚都有新題目",
   "ko": "아침·점심·저녁마다 새 주제"
+ },
+ "Cookieや個人を特定する情報は使いません。": {
+  "en": "No cookies or personally identifiable information are used.",
+  "zh-Hans": "不使用Cookie或可识别个人身份的信息。",
+  "zh-Hant": "不使用Cookie或可識別個人身分的資訊。",
+  "ko": "쿠키나 개인을 특정하는 정보는 사용하지 않아요."
+ },
+ "アクセス解析（GoatCounter）を使っています。": {
+  "en": "This site uses GoatCounter analytics.",
+  "zh-Hans": "本站使用访问分析（GoatCounter）。",
+  "zh-Hant": "本站使用流量分析（GoatCounter）。",
+  "ko": "접속 분석(GoatCounter)을 사용하고 있어요."
  }
 }
