@@ -603,7 +603,7 @@ window.BUDOUX_JA={"UW3":{"。":7360,"の":4478,"、":5467,"に":4332,"を":6132,
    ========================================================= */
 const $ = s => document.querySelector(s);
 // バージョン：更新するたびに上げる（不具合の修正＝3つ目、機能の追加＝2つ目）。CHANGELOG.md にも書く
-const VERSION='1.0.1';
+const VERSION='1.0.2';
 const UNLOCK = /[?&]unlock=1/.test(location.search);
 /* =========================================================
    多言語：日本語の文をキーにして I18N[言語] から引く（なければ日本語のまま）。README「多言語」参照
@@ -1786,7 +1786,7 @@ function showCoach(){
   if(!G||!G.tut)return;let el=$('#coach');
   if(!el){el=document.createElement('div');el.id='coach';el.className='coach';$('#game').appendChild(el);}
   const st=TUT[G.tut.i];if(st.enter)st.enter();
-  el.innerHTML=`<div>${T(IS_TOUCH&&st.tt||st.t)}</div><div class="crow"><small>${T('チュートリアル {0}/{1}',G.tut.i+1,TUT.length)}</small><button class="btn" id="coSkip">${st.last?T('とじる'):T('スキップ')}</button>${st.last?'':`<button class="btn primary" id="coNext">${T('次へ')}</button>`}</div>`;
+  el.innerHTML=`<div>${T(IS_TOUCH&&st.tt||st.t).replace(/。(?!<br>|　|$)/g,'。<br>')}</div><div class="crow"><small>${T('チュートリアル {0}/{1}',G.tut.i+1,TUT.length)}</small><button class="btn" id="coSkip">${st.last?T('とじる'):T('スキップ')}</button>${st.last?'':`<button class="btn primary" id="coNext">${T('次へ')}</button>`}</div>`;
   $('#coSkip').onclick=()=>endTutorial(false);
   const n=$('#coNext');if(n)n.onclick=()=>stepTutorial();
   placeCoach();
@@ -2721,18 +2721,38 @@ const BX_WORDS=['サラダ|ほうれん草','にんじん|千切り','キャベ�
   'トルティーヤ|チップス','ちりめん|じゃこ','スナップ|えんどう','グレープ|フルーツ','カシュー|ナッツ','フライド|オニオン','ミックス|ビーンズ','クリーム|チーズ','ロースト|ビーフ',
   'サウザン|アイランド','かいわれ|大根','カリカリ|油揚げ','オリーブ油|＆レモン','和風|ノンオイル','和風|しょうゆ','ビタミンC|チャージ','エネルギー|チャージ','オリジナルの|お題'].map(w=>[w.replace('|',''),w.replace('|','\u200b')]);
 const ZW='\u200b',BX_SKIP='script,style,textarea,pre,input,select,option,[data-nobx]';
-function bxNode(n){
-  const v=n.nodeValue;if(!v||v.length<5||!HAS_JA.test(v))return;
-  const el=n.parentElement;if(!el||el.closest(BX_SKIP))return;
-  let t=v.split(ZW).join('');for(const[a,b]of BX_WORDS)if(t.includes(a))t=t.split(a).join(b);
-  const out=t.split(ZW).map(x=>BX.parse(x).join(ZW)).join(ZW);if(out!==v)n.nodeValue=out;
+// 太字などで文が分かれていても、ひとつの段落（ブロック）の文をまとめて区切る（分かれ目で途中改行されないように）
+const isInl=el=>{const d=getComputedStyle(el).display;return d==='inline'||d==='contents';};
+function bxBlock(n){let el=n.parentElement;while(el&&el!==document.body&&isInl(el))el=el.parentElement;return el;}
+function bxApply(block){
+  if(!block||block.closest(BX_SKIP))return;
+  const nodes=[],w=document.createTreeWalker(block,NodeFilter.SHOW_TEXT);
+  for(let n;(n=w.nextNode());){if(n.parentElement.closest(BX_SKIP))continue;if(bxBlock(n)===block)nodes.push(n);}
+  const parts=nodes.map(n=>n.nodeValue.split(ZW).join('')),text=parts.join('');
+  if(text.length<5||!HAS_JA.test(text))return;
+  // 区切る位置（文全体での文字の位置）
+  const cut=new Set();let pos=0;
+  for(const ph of BX.parse(text)){pos+=ph.length;cut.add(pos);}
+  for(const[a,b]of BX_WORDS){let i=text.indexOf(a);while(i>=0){cut.add(i+b.indexOf(ZW));i=text.indexOf(a,i+1);}}
+  let off=0;
+  nodes.forEach((n,k)=>{
+    const c=parts[k];let out='';
+    for(let i=0;i<c.length;i++){if((i>0||k>0)&&cut.has(off+i)&&off+i>0)out+=ZW;out+=c[i];}
+    off+=c.length;if(out!==n.nodeValue)n.nodeValue=out;
+  });
 }
 function bxTree(root){
   if(!BX||LANG!=='ja')return;
-  if(root.nodeType===3){bxNode(root);return;}
-  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);for(let n;(n=w.nextNode());)bxNode(n);
+  const blocks=new Set(),add=n=>{if(HAS_JA.test(n.nodeValue))blocks.add(bxBlock(n));};
+  if(root.nodeType===3)add(root);
+  else if(root.nodeType===1){const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);for(let n;(n=w.nextNode());)add(n);}
+  blocks.forEach(bxApply);
 }
-if(BX)new MutationObserver(ms=>{if(LANG!=='ja')return;for(const m of ms){if(m.type==='characterData')bxNode(m.target);else m.addedNodes.forEach(bxTree);}})
+if(BX)new MutationObserver(ms=>{if(LANG!=='ja')return;const blocks=new Set();
+  for(const m of ms){const ns=m.type==='characterData'?[m.target]:[...m.addedNodes];
+    for(const r of ns){if(r.nodeType===3){if(r.parentElement&&HAS_JA.test(r.nodeValue))blocks.add(bxBlock(r));}
+      else if(r.nodeType===1){const w=document.createTreeWalker(r,NodeFilter.SHOW_TEXT);for(let n;(n=w.nextNode());)if(HAS_JA.test(n.nodeValue))blocks.add(bxBlock(n));}}}
+  blocks.forEach(bxApply);})
   .observe(document.body,{childList:true,subtree:true,characterData:true});
 
 /* ---------- boot ---------- */
