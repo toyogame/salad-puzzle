@@ -88,7 +88,8 @@ canvas.px{image-rendering:pixelated;image-rendering:crisp-edges}
 .tutban span{flex:1}
 .tutban .btn{min-height:34px;padding:4px 10px}
 .coach{position:absolute;left:8px;right:8px;top:calc(env(safe-area-inset-top) + 4px);z-index:20;display:flex;flex-direction:column;gap:6px;background:#fffaf0;border:3px solid var(--ink);box-shadow:4px 4px 0 rgba(59,47,42,.3);padding:8px 10px;font-size:13px;line-height:1.5}
-.coach b{color:var(--green-d);font-weight:400}
+.coach b{color:var(--green-d);font-weight:400;white-space:nowrap}
+.coach>div:first-child{text-wrap:pretty}
 .coach .crow{display:flex;gap:6px;justify-content:flex-end;align-items:center}
 .coach .crow small{flex:1;color:var(--dim)}
 .coach .btn{min-height:32px;padding:3px 10px;font-size:12px}
@@ -603,7 +604,7 @@ window.BUDOUX_JA={"UW3":{"。":7360,"の":4478,"、":5467,"に":4332,"を":6132,
    ========================================================= */
 const $ = s => document.querySelector(s);
 // バージョン：更新するたびに上げる（不具合の修正＝3つ目、機能の追加＝2つ目）。CHANGELOG.md にも書く
-const VERSION='1.0.2';
+const VERSION='1.0.3';
 const UNLOCK = /[?&]unlock=1/.test(location.search);
 /* =========================================================
    多言語：日本語の文をキーにして I18N[言語] から引く（なければ日本語のまま）。README「多言語」参照
@@ -1773,6 +1774,12 @@ function confetti(){
 
 /* ---------- チュートリアル（任意・れんしゅうのお題で30秒） ---------- */
 const IS_TOUCH=window.matchMedia&&matchMedia('(pointer:coarse)').matches;
+// 日本語は文と文のあいだを全角スペースにして、最後も「。」で終える（改行は文節の切れ目で自然に）
+function tutText(st){
+  let t=T(IS_TOUCH&&st.tt||st.t);
+  if(LANG==='ja'){t=t.replace(/。(?!<br>|　|$)/g,'。　');if(/[ぁ-んァ-ヶ一-龠）]$/.test(t))t+='。';}
+  return t;
+}
 const TUT=[
   // t＝PC（マウス）、tt＝スマホ（タッチ）
   {t:'下の具材を<b>ボウルへドラッグ</b>して盛りつけよう（クリックでもOK）',tt:'下の具材を<b>ボウルの方へ引っぱって</b>盛りつけよう（タップでもOK）',ok:()=>G.pieces.length>0},
@@ -1786,7 +1793,7 @@ function showCoach(){
   if(!G||!G.tut)return;let el=$('#coach');
   if(!el){el=document.createElement('div');el.id='coach';el.className='coach';$('#game').appendChild(el);}
   const st=TUT[G.tut.i];if(st.enter)st.enter();
-  el.innerHTML=`<div>${T(IS_TOUCH&&st.tt||st.t).replace(/。(?!<br>|　|$)/g,'。<br>')}</div><div class="crow"><small>${T('チュートリアル {0}/{1}',G.tut.i+1,TUT.length)}</small><button class="btn" id="coSkip">${st.last?T('とじる'):T('スキップ')}</button>${st.last?'':`<button class="btn primary" id="coNext">${T('次へ')}</button>`}</div>`;
+  el.innerHTML=`<div>${tutText(st)}</div><div class="crow"><small>${T('チュートリアル {0}/{1}',G.tut.i+1,TUT.length)}</small><button class="btn" id="coSkip">${st.last?T('とじる'):T('スキップ')}</button>${st.last?'':`<button class="btn primary" id="coNext">${T('次へ')}</button>`}</div>`;
   $('#coSkip').onclick=()=>endTutorial(false);
   const n=$('#coNext');if(n)n.onclick=()=>stepTutorial();
   placeCoach();
