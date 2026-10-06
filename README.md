@@ -102,3 +102,6 @@
 - 送るイベント：`app_open`（言語）／`challenge_start`（時間帯・モード）／`challenge_finish`（モード・ランク）／`share_open`／`share_x`／`share_native`／`image_save`／`share_copy`／`tutorial_start`・`tutorial_done`・`tutorial_skip`／`ingredients`／`mode`／`lang`／`custom_save`／`custom_share`／`custom_import`
 - 個人情報や投稿コメントの本文は送りません。アーティファクト版（`build_artifact.py`）では解析を外します
 - ほかのサービス（Google アナリティクス4・Plausible・Googleタグマネージャー）に替える場合は、タグを差しかえるだけで `track()` がそのまま使えます
+
+## ライセンス・素材
+- 使っている外部の素材・データ（BudouX・DotGothic16・日本食品標準成分表・FoodData Central など）とそのライセンスは `THIRD_PARTY_NOTICES.md`、ライセンス全文は `licenses/`
