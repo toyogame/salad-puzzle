@@ -214,6 +214,9 @@ select.mkin{-webkit-appearance:none;appearance:none;background:#fff linear-gradi
 .ltools button{background:var(--paper);border:2px solid var(--ink);font-size:11px;height:26px;padding:0;border-radius:0}
 .ltools button:active{background:var(--soft)}
 .ltools button:disabled{opacity:.3}
+/* けすボタンは薄い赤で目立たせる */
+.ltools #lDel{background:#fbded8;color:#c0392b;font-weight:700}
+.ltools #lDel:active{background:#f5c2b8}
 .llist{list-style:none;margin:0;padding:0;overflow-y:auto;flex:1;min-height:0}
 .lrow{position:relative;display:flex;align-items:center;gap:2px;padding:2px 2px;border-bottom:1px dashed var(--soft);font-size:11px;cursor:grab;background:var(--paper);-webkit-touch-callout:none;will-change:transform}
 .lrow.sel{background:#fff3b8;box-shadow:inset 3px 0 0 var(--orange)}
@@ -642,7 +645,7 @@ window.BUDOUX_JA={"UW3":{"。":7360,"の":4478,"、":5467,"に":4332,"を":6132,
    ========================================================= */
 const $ = s => document.querySelector(s);
 // バージョン：更新するたびに上げる（不具合の修正＝3つ目、機能の追加＝2つ目）。CHANGELOG.md にも書く
-const VERSION='1.3.1';
+const VERSION='1.3.2';
 const UNLOCK = /[?&]unlock=1/.test(location.search);
 /* =========================================================
    多言語：日本語の文をキーにして I18N[言語] から引く（なければ日本語のまま）。README「多言語」参照
