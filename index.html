@@ -646,7 +646,7 @@ window.BUDOUX_JA={"UW3":{"。":7360,"の":4478,"、":5467,"に":4332,"を":6132,
    ========================================================= */
 const $ = s => document.querySelector(s);
 // バージョン：更新するたびに上げる（不具合の修正＝3つ目、機能の追加＝2つ目）。CHANGELOG.md にも書く
-const VERSION='1.3.3';
+const VERSION='1.3.4';
 const UNLOCK = /[?&]unlock=1/.test(location.search);
 /* =========================================================
    多言語：日本語の文をキーにして I18N[言語] から引く（なければ日本語のまま）。README「多言語」参照
@@ -1507,11 +1507,17 @@ function dayPlan(dayKey){
     return{theme,size:THEMES[theme].size||SLOT_SIZES[i][Math.floor(R()*SLOT_SIZES[i].length)]};
   });
 }
+// リリース直後のお題は、色あざやかなサラダになるものを選んで固定（朝・昼・夜の順。seed はお手本の組み合わせ）
+const FIXED_PLAN={
+  '2026-10-14':[{theme:'color',size:'S',seed:3484365},{theme:'cobb',size:'S',seed:3064670},{theme:'caprese',size:'S',seed:8243712}],
+  '2026-10-15':[{theme:'fruitful',size:'S',seed:1069073},{theme:'chuka',size:'M',seed:601862},{theme:'seafood',size:'S',seed:10429356}],
+  '2026-10-16':[{theme:'vitc',size:'S',seed:2835006},{theme:'nicoise',size:'M',seed:1077004},{theme:'italian',size:'S',seed:3040929}],
+};
 const CH={};
 function getChallenge(dayKey,slot){
   const id=dayKey+':'+SLOTS[slot].k;if(CH[id])return CH[id];
-  const p=dayPlan(dayKey)[slot];
-  return CH[id]=makeChallenge(id,dayKey,slot,p.theme,p.size,hashStr('ch|'+id));
+  const p=(FIXED_PLAN[dayKey]||dayPlan(dayKey))[slot];
+  return CH[id]=makeChallenge(id,dayKey,slot,p.theme,p.size,p.seed??hashStr('ch|'+id));
 }
 function practiceChallenge(seed){
   if(seed==null)seed=(Math.random()*1e9)>>>0;const R=mulberry32(seed),slot=Math.floor(R()*3);
