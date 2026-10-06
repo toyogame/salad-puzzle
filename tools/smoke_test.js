@@ -49,6 +49,7 @@ const ok = (name, cond, info = '') => { checks.push([name, !!cond, info]); };
   await p.click('#btnDone'); await p.waitForTimeout(600);
   ok('お手本でPERFECT', (await p.locator('#rRank').innerText()).includes('PERFECT'));
   await p.click('#card'); await p.waitForTimeout(300); ok('画像タップで拡大', await p.evaluate(() => $('#lb').classList.contains('on'))); await p.evaluate(() => closeLb());
+  ok('Instagram用：ストーリーズ画像1080x1920・文にハッシュタグ', await p.evaluate(() => $('#cardS').width === 1080 && $('#cardS').height === 1920 && igText().includes('#サラダパズル') && !/https?:/.test(igText())));
   ok('画像は2枚とも1080x1350', await p.evaluate(() => [$('#card').width, $('#card').height, $('#card2').width, $('#card2').height].join() === '1080,1350,1080,1350'));
   await p.click('#btnShare');
   ok('投稿文の1行目', (await p.locator('#shPrev').innerText()).startsWith('🥗サラダパズル'));

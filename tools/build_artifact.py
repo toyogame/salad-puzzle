@@ -55,9 +55,10 @@ async function saveImages(list){
     catch(e){const c=e&&e.code;if(c==='declined')break;toast(c==='rate_limited'?T('少し待ってからもう一度押してね'):T('画像を保存できませんでした'));return;}}
   if(n)toast(T('画像を{0}枚保存しました',n));
 }
+async function saveBlob(blob,name){if(!DL)return;try{await DL.save({filename:name,data:blob});}catch(_){}}
 """ + s[b:]
     a, b = s.index('// NATIVE-SHARE-START'), s.index('// NATIVE-SHARE-END')
-    s = s[:a] + 'function canNative(){return false;}   // アーティファクトでは共有シートが使えない\n' + s[b:]
+    s = s[:a] + 'function canNative(){return false;}   // アーティファクトでは共有シートが使えない\nfunction canShareFile(){return false;}\nasync function shareFile(){return false;}\n' + s[b:]
     rep('const UNLOCK = /[?&]unlock=1/.test(location.search);', 'const UNLOCK = false;')
     # アクセス解析は GitHub Pages 版だけ（アーティファクトでは外部のスクリプトを読めない）
     s = re.sub(r'<script data-goatcounter=[^>]*></script>\s*', '', s)

@@ -3022,5 +3022,101 @@
   "zh-Hans": "本站使用访问分析（GoatCounter）。",
   "zh-Hant": "本站使用流量分析（GoatCounter）。",
   "ko": "접속 분석(GoatCounter)을 사용하고 있어요."
+ },
+ "Instagram用": {
+  "en": "For Instagram",
+  "zh-Hans": "Instagram用",
+  "zh-Hant": "Instagram用",
+  "ko": "Instagram용"
+ },
+ "ストーリーズ用画像": {
+  "en": "Story image",
+  "zh-Hans": "快拍用图片",
+  "zh-Hant": "限時動態用圖片",
+  "ko": "스토리용 이미지"
+ },
+ "縦長（9:16）": {
+  "en": "Vertical (9:16)",
+  "zh-Hans": "竖版（9:16）",
+  "zh-Hant": "直式（9:16）",
+  "ko": "세로형(9:16)"
+ },
+ "盛りつけタイムラプス動画": {
+  "en": "Time-lapse video",
+  "zh-Hans": "摆盘延时视频",
+  "zh-Hant": "擺盤縮時影片",
+  "ko": "담기 타임랩스 영상"
+ },
+ "約8秒・リールやストーリーズに": {
+  "en": "About 8 sec · for Reels and Stories",
+  "zh-Hans": "约8秒·适合Reels和快拍",
+  "zh-Hant": "約8秒·適合Reels和限時動態",
+  "ko": "약 8초·릴스나 스토리에"
+ },
+ "動画をつくる": {
+  "en": "Make video",
+  "zh-Hans": "制作视频",
+  "zh-Hant": "製作影片",
+  "ko": "영상 만들기"
+ },
+ "動画をつくっています… {0}%": {
+  "en": "Making video… {0}%",
+  "zh-Hans": "正在制作视频… {0}%",
+  "zh-Hant": "正在製作影片… {0}%",
+  "ko": "영상을 만드는 중… {0}%"
+ },
+ "動画をつくりなおす": {
+  "en": "Make again",
+  "zh-Hans": "重新制作",
+  "zh-Hant": "重新製作",
+  "ko": "다시 만들기"
+ },
+ "この端末では動画をつくれません": {
+  "en": "This device can’t make videos",
+  "zh-Hans": "此设备无法制作视频",
+  "zh-Hant": "此裝置無法製作影片",
+  "ko": "이 기기에서는 영상을 만들 수 없어요"
+ },
+ "動画はWebM形式です。Instagramに入らないときはMP4に変換してください": {
+  "en": "The video is WebM. If Instagram won’t accept it, convert it to MP4",
+  "zh-Hans": "视频为WebM格式。若无法上传到Instagram，请转换为MP4",
+  "zh-Hant": "影片為WebM格式。若無法上傳到Instagram，請轉換為MP4",
+  "ko": "영상은 WebM 형식이에요. Instagram에 올라가지 않으면 MP4로 변환해 주세요"
+ },
+ "動画を保存しました": {
+  "en": "Video saved",
+  "zh-Hans": "视频已保存",
+  "zh-Hant": "影片已儲存",
+  "ko": "영상을 저장했어요"
+ },
+ "ストーリーズ用の画像を保存しました": {
+  "en": "Story image saved",
+  "zh-Hans": "快拍用图片已保存",
+  "zh-Hant": "限時動態用圖片已儲存",
+  "ko": "스토리용 이미지를 저장했어요"
+ },
+ "Instagram用の文をコピー（ハッシュタグつき）": {
+  "en": "Copy Instagram caption (with hashtags)",
+  "zh-Hans": "复制Instagram文案（含话题标签）",
+  "zh-Hant": "複製Instagram文案（含主題標籤）",
+  "ko": "Instagram용 글 복사(해시태그 포함)"
+ },
+ "Instagram用の文をコピーしました": {
+  "en": "Instagram caption copied",
+  "zh-Hans": "已复制Instagram文案",
+  "zh-Hant": "已複製Instagram文案",
+  "ko": "Instagram용 글을 복사했어요"
+ },
+ "共有できませんでした": {
+  "en": "Couldn’t share",
+  "zh-Hans": "无法分享",
+  "zh-Hant": "無法分享",
+  "ko": "공유하지 못했어요"
+ },
+ "あなたも盛りつけてみて！": {
+  "en": "Try plating one yourself!",
+  "zh-Hans": "你也来摆一盘吧！",
+  "zh-Hant": "你也來擺一盤吧！",
+  "ko": "당신도 담아 보세요!"
  }
 }
