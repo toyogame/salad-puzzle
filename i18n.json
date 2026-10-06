@@ -1901,12 +1901,6 @@
   "zh-Hant": "儲存結果和食譜圖片",
   "ko": "결과와 레시피 이미지 저장"
  },
- "Claudeアプリでは保存のときに共有メニューが開くので、そこからXを選んでもOK": {
-  "en": "In the Claude app, saving opens the share menu — you can pick X from there too",
-  "zh-Hans": "在Claude应用中保存时会打开分享菜单，也可以直接从那里选择X",
-  "zh-Hant": "在Claude應用程式中儲存時會開啟分享選單，也可以直接從那裡選擇X",
-  "ko": "Claude 앱에서는 저장할 때 공유 메뉴가 열리니 거기서 X를 골라도 OK"
- },
  "Xをひらく": {
   "en": "Open X",
   "zh-Hans": "打开X",

@@ -52,6 +52,7 @@ const ok = (name, cond, info = '') => { checks.push([name, !!cond, info]); };
   ok('画像は2枚とも1080x1350', await p.evaluate(() => [$('#card').width, $('#card').height, $('#card2').width, $('#card2').height].join() === '1080,1350,1080,1350'));
   await p.click('#btnShare');
   ok('投稿文の1行目', (await p.locator('#shPrev').innerText()).startsWith('🥗サラダパズル'));
+  ok('投稿文のリンクは GitHub Pages', (await p.locator('#shPrev').innerText()).includes('https://toyogame.github.io/salad-puzzle/'));
   await p.click('#shClose'); await p.click('#btnHome');
 
   // 3) 精密採点

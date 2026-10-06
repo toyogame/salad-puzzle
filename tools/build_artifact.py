@@ -2,20 +2,19 @@
 """index.html から claude.ai アーティファクト用の HTML を作る。
 
 使い方（リポジトリのルートで）:
-    python3 tools/build_artifact.py [--out dist/salad-artifact.html] [--url <アーティファクトのURL>]
+    python3 tools/build_artifact.py [--out dist/salad-artifact.html] [--url <投稿文に入れるURL（ふつうは不要）>]
 
 アーティファクト版でのちがい:
   - <!doctype>/<html>/<head>/<body> は付けない（公開時に自動で付く）。<title> を先頭に置く
   - 画像保存は downloads 機能（window.claude.use('downloads')）を使う
   - 共有シート（navigator.share）は使えないので外す
-  - 投稿文に入れるゲームのURLはアーティファクトのURL
+  - 投稿文に入れるゲームのURLは本体と同じ（GitHub Pages）。--url で変えられる
   - ?unlock=1 は使えないので無効
-  - オリジナルのお題はリンク（#q=）ではなくコードで送る
 """
 import argparse, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-DEFAULT_URL = 'https://claude.ai/artifact/JEv1H3K4Ey9ow4NY3ZgrqZ'
+DEFAULT_URL = None   # 投稿文のURLは index.html の GAME_URL（GitHub Pages）をそのまま使う
 
 
 def build(src: str, url: str) -> str:
@@ -40,7 +39,8 @@ def build(src: str, url: str) -> str:
     rep('.row>.btn{flex:1}', '.row>.btn{flex:1}\na.btn{display:flex;align-items:center;justify-content:center;text-decoration:none;color:inherit}\n'
         '.btn:focus-visible,.it:focus-visible,.tab:focus-visible,.card:focus-visible{outline:3px solid var(--orange);outline-offset:2px}\n'
         '@media (prefers-reduced-motion:reduce){.rankline b,.scorebox.bump{animation:none}}')
-    rep("const GAME_URL=/^https?:/.test(location.protocol)?location.origin+location.pathname:'';", f"const GAME_URL='{url}';")
+    if url:
+        s = re.sub(r"const GAME_URL='[^']*';", lambda m: f"const GAME_URL='{url}';", s, count=1)
     rep('function download(blob,name)', """let DL=null;
 if(window.claude&&window.claude.use)window.claude.use('downloads').then(d=>{DL=d;if(!d)document.querySelectorAll('#btnSave,[data-save],#lbSave,#shSave').forEach(b=>b.hidden=true);}).catch(()=>{});
 function download(blob,name)""")
@@ -58,7 +58,6 @@ async function saveImages(list){
     a, b = s.index('// NATIVE-SHARE-START'), s.index('// NATIVE-SHARE-END')
     s = s[:a] + 'function canNative(){return false;}   // アーティファクトでは共有シートが使えない\n' + s[b:]
     rep('const UNLOCK = /[?&]unlock=1/.test(location.search);', 'const UNLOCK = false;')
-    rep('const CUSTOM_LINK=!!GAME_URL;', 'const CUSTOM_LINK=false;')
     assert 'navigator.share' not in s
     return s
 

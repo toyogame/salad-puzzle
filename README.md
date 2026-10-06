@@ -46,7 +46,7 @@
 - トップの「オリジナルのお題をつくる」で、名前・ボウルの大きさ・種類（主菜／副菜／指定なし）・各目標（カロリー／たんぱく質／脂質／炭水化物／食物繊維／塩分／野菜／盛り付け／ビタミンC／カルシウム／鉄／彩り／具材の種類）の下限・上限、ドレッシングなしを自由に決めてお題をつくれる（空らんは制限なし）
 - 「ひな形」から、きょうのお題や各テーマを選ぶと、えらんだボウルの大きさ・サラダの種類に合わせた数値が入る（そこから調整できる）
 - 保存時に、目標をすべて満たすお手本サラダを自動でさがす（見つかれば PERFECT が出せることを確認ずみ、結果画面にお手本も出る）
-- 「共有」でお題をコードにしてコピー。GitHub Pages 版はリンク（`#q=コード`）になり、開くとお題が追加される。アーティファクト版はコードを「もらったお題を追加」に貼る
+- 「共有」でお題のリンク（`https://toyogame.github.io/salad-puzzle/#q=コード`）をコピー。開くとお題が追加される。コードを「もらったお題を追加」に貼ってもよい
 - 記録はお題ごと。投稿文のリンクもそのお題のリンクになる（GitHub Pages 版）
 
 ## 食材
@@ -85,13 +85,13 @@
 ## 開発用
 - `?unlock=1` を付けると時間に関係なく3つのお題を全部遊べます
 - 記録・作りかけ・設定は localStorage に保存
-- claude.ai アーティファクト版を作る: `python3 tools/build_artifact.py`（`dist/salad-artifact.html` に出力。`--url` で投稿文に入れるURLを変更）
+- claude.ai アーティファクト版を作る: `python3 tools/build_artifact.py`（`dist/salad-artifact.html` に出力）
 - 動作チェック: `node tools/smoke_test.js`（アーティファクト版は `--artifact`）。Playwright が必要
 - OGP画像・アイコンの作りなおし: `node tools/make_images.js --font-css <@fontsource/dotgothic16 の 400.css>`（`ogp.png` 1200×630、`icon.png` 192×192）
 
 ## 公開（GitHub Pages）
 - このリポジトリの Settings → Pages で「Deploy from a branch」→ `main` / `(root)` を選ぶと `https://toyogame.github.io/salad-puzzle/` で遊べます
-- URLが違う場合は `index.html` の `og:url`・`og:image`（Xに貼ったときのカード）を書きかえてください（投稿文のURLは開いているページのURLが自動で入ります）
+- 投稿文・オリジナルのお題のリンクには、どの版（GitHub Pages・アーティファクト）でも `https://toyogame.github.io/salad-puzzle/` が入ります。公開先が変わったら `index.html` の `GAME_URL` と `og:url`・`og:image` を書きかえてください
 
 ## アクセス解析（いまは無効）
 - 解析ツールのタグを `index.html` の `<!-- ANALYTICS -->` の位置に貼り、スクリプト内の `ANALYTICS={enabled:false}` を `true` にすると、ゲーム内のイベントが送られます
