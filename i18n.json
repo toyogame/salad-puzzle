@@ -2986,5 +2986,29 @@
   "zh-Hans": "调整到<b>所有仪表都变绿</b>。<br>右上角是当前分数。　完成后按<b>“完成！”</b>",
   "zh-Hant": "調整到<b>所有儀表都變綠</b>。<br>右上角是目前分數。　完成後按<b>「完成！」</b>",
   "ko": "<b>미터가 전부 초록</b>이 되도록 조절해요.<br>오른쪽 위가 지금 점수예요.　다 되면 <b>‘완성!’</b>"
+ },
+ "具材を盛りつけて、お題のカロリーと栄養素にぴったり合わせるドット絵のパズル。朝・昼・夜に新しいお題。": {
+  "en": "A pixel-art puzzle: build a salad that exactly matches the challenge’s calories and nutrients. New challenges every morning, noon and night.",
+  "zh-Hans": "像素风益智游戏：摆好食材，让沙拉的热量和营养刚好符合题目。早、午、晚都有新题目。",
+  "zh-Hant": "像素風益智遊戲：擺好食材，讓沙拉的熱量和營養剛好符合題目。早、午、晚都有新題目。",
+  "ko": "재료를 담아 주제의 칼로리·영양소에 딱 맞추는 도트 그림 퍼즐. 아침·점심·저녁마다 새 주제."
+ },
+ "お題のカロリーと栄養素に": {
+  "en": "Build a salad that hits",
+  "zh-Hans": "按照题目的热量和营养",
+  "zh-Hant": "按照題目的熱量和營養",
+  "ko": "주제의 칼로리·영양소에"
+ },
+ "ぴったり合わせて盛りつけよう": {
+  "en": "the challenge’s calories & nutrients",
+  "zh-Hans": "摆出刚刚好的沙拉",
+  "zh-Hant": "擺出剛剛好的沙拉",
+  "ko": "딱 맞게 샐러드를 담아요"
+ },
+ "朝・昼・夜に新しいお題": {
+  "en": "New challenges morning, noon & night",
+  "zh-Hans": "早·午·晚都有新题目",
+  "zh-Hant": "早·午·晚都有新題目",
+  "ko": "아침·점심·저녁마다 새 주제"
  }
 }

@@ -89,6 +89,9 @@ const ok = (name, cond, info = '') => { checks.push([name, !!cond, info]); };
       return out; }, lang.startsWith('zh') ? '[\\u3040-\\u30ff]' : '[\\u3040-\\u30ff\\u4e00-\\u9fff]');
     const l1 = await left(); await q.evaluate(() => startGame(practiceChallenge(7))); await q.waitForTimeout(200); const l2 = await left();
     ok(`多言語 ${lang}`, !qe.length && !l1.length && !l2.length, [...qe, ...l1, ...l2].slice(0, 3).join(' / '));
+    const dir = { en: 'en', 'zh-Hans': 'zh-hans', 'zh-Hant': 'zh-hant', ko: 'ko' }[lang];
+    const page = fs.existsSync(path.join(ROOT, dir, 'index.html')) ? fs.readFileSync(path.join(ROOT, dir, 'index.html'), 'utf8') : '';
+    ok(`言語別のカード ${lang}`, await q.evaluate(d => langURL().endsWith('/' + d + '/'), dir) && page.includes(`ogp-${dir}.png`) && fs.existsSync(path.join(ROOT, `ogp-${dir}.png`)));
     await q.close();
   }
   await b.close();

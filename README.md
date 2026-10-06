@@ -87,11 +87,13 @@
 - 記録・作りかけ・設定は localStorage に保存
 - claude.ai アーティファクト版を作る: `python3 tools/build_artifact.py`（`dist/salad-artifact.html` に出力）
 - 動作チェック: `node tools/smoke_test.js`（アーティファクト版は `--artifact`）。Playwright が必要
-- OGP画像・アイコンの作りなおし: `node tools/make_images.js --font-css <@fontsource/dotgothic16 の 400.css>`（`ogp.png` 1200×630、`icon.png` 192×192）
+- OGP画像・アイコンの作りなおし: `node tools/make_images.js --font-css <@fontsource/dotgothic16 の 400.css>`（`ogp.png` と言語別の `ogp-en.png`・`ogp-zh-hans.png`・`ogp-zh-hant.png`・`ogp-ko.png`、`icon.png`）
+- 言語別の入口ページの作りなおし: `python3 tools/lang_pages.py`（`en/`・`zh-hans/`・`zh-hant/`・`ko/`）
 
 ## 公開（GitHub Pages）
 - このリポジトリの Settings → Pages で「Deploy from a branch」→ `main` / `(root)` を選ぶと `https://toyogame.github.io/salad-puzzle/` で遊べます
-- 投稿文・オリジナルのお題のリンクには、どの版（GitHub Pages・アーティファクト）でも `https://toyogame.github.io/salad-puzzle/` が入ります。公開先が変わったら `index.html` の `GAME_URL` と `og:url`・`og:image` を書きかえてください
+- 投稿文・オリジナルのお題のリンクは、日本語なら `https://toyogame.github.io/salad-puzzle/`、ほかの言語なら `…/en/`・`…/zh-hans/`・`…/zh-hant/`・`…/ko/`。言語別のURLはXなどのカード（タイトル・説明・画像）がその言語になる入口ページで、開くとすぐゲーム本体に移る（ゲームの言語は端末の設定で決まる）
+- 公開先が変わったら `index.html` の `GAME_URL` と `og:url`・`og:image`、`tools/lang_pages.py` の `SITE` を書きかえて、入口ページを作りなおす
 
 ## アクセス解析（いまは無効）
 - 解析ツールのタグを `index.html` の `<!-- ANALYTICS -->` の位置に貼り、スクリプト内の `ANALYTICS={enabled:false}` を `true` にすると、ゲーム内のイベントが送られます
