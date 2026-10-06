@@ -1391,30 +1391,6 @@
   "zh-Hant": "種類",
   "ko": "종류"
  },
- "下の具材を<b>ボウルへドラッグ</b>して盛りつけよう（タップでもOK）": {
-  "en": "Drag an ingredient from below <b>into the bowl</b> (tapping works too)",
-  "zh-Hans": "把下面的食材<b>拖进碗里</b>（点一下也可以）",
-  "zh-Hant": "把下面的食材<b>拖進碗裡</b>（點一下也可以）",
-  "ko": "아래 재료를 <b>볼로 드래그</b>해서 담아 보세요(탭해도 OK)"
- },
- "置いた具材をタップ → <b>四隅の□で大きさ</b>、<b>●で回転</b>。大きくするとグラム数も増えるよ": {
-  "en": "Tap a placed ingredient → <b>corner □ to resize</b>, <b>● to rotate</b>. Bigger means more grams",
-  "zh-Hans": "点击放好的食材 → <b>拖四角□调整大小</b>，<b>●旋转</b>。越大克数越多",
-  "zh-Hant": "點擊放好的食材 → <b>拖四角□調整大小</b>，<b>●旋轉</b>。越大克數越多",
-  "ko": "놓은 재료를 탭 → <b>네 귀퉁이 □로 크기</b>, <b>●로 회전</b>. 크게 하면 그램 수도 늘어나요"
- },
- "左の<b>「いれたもの」</b>は重なり順。行をドラッグ（スマホは長押し）や▲▼で上下を入れかえられるよ": {
-  "en": "The <b>“Added”</b> list on the left is the stacking order. Drag a row (long-press on phones) or use ▲▼ to reorder",
-  "zh-Hans": "左边的<b>“已放入”</b>是叠放顺序。拖动行（手机上长按）或用▲▼调整上下",
-  "zh-Hant": "左邊的<b>「已放入」</b>是疊放順序。拖動列（手機上長按）或用▲▼調整上下",
-  "ko": "왼쪽 <b>‘넣은 것’</b>은 겹치는 순서예요. 행을 드래그(폰은 길게 누르기)하거나 ▲▼로 순서를 바꿀 수 있어요"
- },
- "<b>ドレッシング</b>をえらんで、ボウルを<b>なぞって</b>かけよう。かけた量がグラム数になるよ": {
-  "en": "Pick a <b>dressing</b> and <b>trace</b> over the bowl to pour it. The amount you pour becomes the grams",
-  "zh-Hans": "选好<b>酱汁</b>，在碗上<b>描画</b>来淋上。淋的量就是克数",
-  "zh-Hant": "選好<b>醬汁</b>，在碗上<b>描畫</b>來淋上。淋的量就是克數",
-  "ko": "<b>드레싱</b>을 골라 볼 위를 <b>따라 그려서</b> 뿌려요. 뿌린 양이 그램 수가 돼요"
- },
  "メーターが<b>ぜんぶ緑</b>になるように調整しよう。右上が今の点数。できたら<b>「完成！」</b>": {
   "en": "Adjust until <b>every meter is green</b>. Your score is at the top right. When you’re done, press <b>“Done!”</b>",
   "zh-Hans": "调整到<b>所有仪表都变绿</b>。右上角是当前分数。完成后按<b>“完成！”</b>",
@@ -1559,12 +1535,6 @@
   "zh-Hant": "沙拉拼圖",
   "ko": "샐러드 퍼즐"
  },
- "はじめて？ 30秒で遊び方がわかります": {
-  "en": "New here? Learn to play in 30 seconds",
-  "zh-Hans": "第一次玩？30秒就能学会",
-  "zh-Hant": "第一次玩？30秒就能學會",
-  "ko": "처음이세요? 30초면 플레이 방법을 알 수 있어요"
- },
  "やってみる": {
   "en": "Try it",
   "zh-Hans": "试试看",
@@ -1630,24 +1600,6 @@
   "zh-Hans": "✎ 创建原创题目",
   "zh-Hant": "✎ 建立原創題目",
   "ko": "✎ 나만의 주제 만들기"
- },
- "お題の目安は『日本人の食事摂取基準（2025年版）』などを参考に、ごはんと合わせた1食を想定しています。": {
-  "en": "The challenge guidelines are based on the “Dietary Reference Intakes for Japanese (2025)” and other sources, and assume one meal eaten with rice.",
-  "zh-Hans": "题目的标准参考了《日本人的饮食摄取基准（2025年版）》等，设想为搭配米饭的一餐。",
-  "zh-Hant": "題目的標準參考了《日本人的飲食攝取基準（2025年版）》等，設想為搭配白飯的一餐。",
-  "ko": "주제의 기준은 『일본인의 식사섭취기준(2025년판)』 등을 참고했으며, 밥과 함께 먹는 한 끼를 상정하고 있어요."
- },
- "ゲーム実況・配信・SNSへの投稿は自由にどうぞ（連絡は不要です）。": {
-  "en": "Feel free to stream, make videos, or post on social media (no need to ask).",
-  "zh-Hans": "欢迎游戏实况、直播和发布到社交媒体（无需联系）。",
-  "zh-Hant": "歡迎遊戲實況、直播和發布到社群媒體（無需聯絡）。",
-  "ko": "게임 실황·방송·SNS 게시는 자유롭게 해 주세요(연락은 필요 없어요)."
- },
- "カロリー・栄養素の数値はゲーム上の目安です。実際の食品とは異なる場合がありますので、あらかじめご了承ください。": {
-  "en": "Calorie and nutrient values are in-game estimates and may differ from actual foods. Thank you for understanding.",
-  "zh-Hans": "热量和营养素数值为游戏中的估算值，可能与实际食品不同，敬请谅解。",
-  "zh-Hant": "熱量和營養素數值為遊戲中的估算值，可能與實際食品不同，敬請見諒。",
-  "ko": "칼로리·영양소 수치는 게임상의 추정치예요. 실제 식품과 다를 수 있으니 양해 부탁드려요."
  },
  "オリジナルのお題": {
   "en": "Custom challenges",
@@ -2944,5 +2896,101 @@
   "zh-Hans": "把食材拖进碗里",
   "zh-Hant": "把食材拖進碗裡",
   "ko": "재료를 볼로 드래그"
+ },
+ "お題の目安は『日本人の食事摂取基準（2025年版）』などを参考に": {
+  "en": "The challenge guidelines are based on the “Dietary Reference Intakes for Japanese (2025)” and other sources",
+  "zh-Hans": "题目的标准参考了《日本人的饮食摄取基准（2025年版）》等",
+  "zh-Hant": "題目的標準參考了《日本人的飲食攝取基準（2025年版）》等",
+  "ko": "주제의 기준은 『일본인의 식사섭취기준(2025년판)』 등을 참고해"
+ },
+ "ごはんと合わせた1食を想定しています。": {
+  "en": "and assume one meal eaten with rice.",
+  "zh-Hans": "设想为搭配米饭的一餐。",
+  "zh-Hant": "設想為搭配白飯的一餐。",
+  "ko": "밥과 함께 먹는 한 끼를 상정하고 있어요."
+ },
+ "ゲーム実況・配信・SNSへの投稿は自由にどうぞ。": {
+  "en": "Feel free to stream, make videos, or post on social media.",
+  "zh-Hans": "欢迎游戏实况、直播和发布到社交媒体。",
+  "zh-Hant": "歡迎遊戲實況、直播和發布到社群媒體。",
+  "ko": "게임 실황·방송·SNS 게시는 자유롭게 해 주세요."
+ },
+ "カロリー・栄養素の数値はゲーム上の目安です。": {
+  "en": "Calorie and nutrient values are in-game estimates.",
+  "zh-Hans": "热量和营养素数值为游戏中的估算值",
+  "zh-Hant": "熱量和營養素數值為遊戲中的估算值",
+  "ko": "칼로리·영양소 수치는 게임상의 추정치예요."
+ },
+ "実際の食品とは異なる場合がありますので": {
+  "en": "They may differ from actual foods —",
+  "zh-Hans": "可能与实际食品不同",
+  "zh-Hant": "可能與實際食品不同",
+  "ko": "실제 식품과 다를 수 있으니"
+ },
+ "あらかじめご了承ください。": {
+  "en": "thank you for understanding.",
+  "zh-Hans": "敬请谅解。",
+  "zh-Hant": "敬請見諒。",
+  "ko": "양해 부탁드려요."
+ },
+ "はじめて？<br class=\"sp\"> 30秒で遊び方がわかります": {
+  "en": "New here?<br class=\"sp\"> Learn to play in 30 seconds",
+  "zh-Hans": "第一次玩？<br class=\"sp\"> 30秒就能学会",
+  "zh-Hant": "第一次玩？<br class=\"sp\"> 30秒就能學會",
+  "ko": "처음이세요?<br class=\"sp\"> 30초면 플레이 방법을 알 수 있어요"
+ },
+ "下の具材を<b>ボウルへドラッグ</b>して盛りつけよう（クリックでもOK）": {
+  "en": "Drag an ingredient from below <b>into the bowl</b> (clicking works too)",
+  "zh-Hans": "把下面的食材<b>拖进碗里</b>（点击也可以）",
+  "zh-Hant": "把下面的食材<b>拖進碗裡</b>（點擊也可以）",
+  "ko": "아래 재료를 <b>볼로 드래그</b>해서 담아 보세요(클릭해도 OK)"
+ },
+ "下の具材を<b>ボウルの方へ引っぱって</b>盛りつけよう（タップでもOK）": {
+  "en": "<b>Pull an ingredient up toward the bowl</b> to place it (tapping works too)",
+  "zh-Hans": "把下面的食材<b>往碗的方向拉</b>来摆盘（点一下也可以）",
+  "zh-Hant": "把下面的食材<b>往碗的方向拉</b>來擺盤（點一下也可以）",
+  "ko": "아래 재료를 <b>볼 쪽으로 끌어당겨</b> 담아 보세요(탭해도 OK)"
+ },
+ "置いた具材をクリック → <b>四隅の□で大きさ</b>、<b>●で回転</b>。大きくするとグラム数も増えるよ": {
+  "en": "Click a placed ingredient → <b>corner □ to resize</b>, <b>● to rotate</b>. Bigger means more grams",
+  "zh-Hans": "点击放好的食材 → <b>拖四角□调整大小</b>，<b>●旋转</b>。越大克数越多",
+  "zh-Hant": "點擊放好的食材 → <b>拖四角□調整大小</b>，<b>●旋轉</b>。越大克數越多",
+  "ko": "놓은 재료를 클릭 → <b>네 귀퉁이 □로 크기</b>, <b>●로 회전</b>. 크게 하면 그램 수도 늘어나요"
+ },
+ "置いた具材をタップ → <b>四隅の□で大きさ</b>、<b>●で回転</b>。2本指でつまんでもOK。大きくするとグラム数も増えるよ": {
+  "en": "Tap a placed ingredient → <b>corner □ to resize</b>, <b>● to rotate</b>. Pinching with two fingers works too. Bigger means more grams",
+  "zh-Hans": "点一下放好的食材 → <b>拖四角□调整大小</b>，<b>●旋转</b>。也可以用两指捏合。越大克数越多",
+  "zh-Hant": "點一下放好的食材 → <b>拖四角□調整大小</b>，<b>●旋轉</b>。也可以用兩指捏合。越大克數越多",
+  "ko": "놓은 재료를 탭 → <b>네 귀퉁이 □로 크기</b>, <b>●로 회전</b>. 두 손가락으로 집어도 OK. 크게 하면 그램 수도 늘어나요"
+ },
+ "左の<b>「いれたもの」</b>は重なり順。行をドラッグするか▲▼で上下を入れかえられるよ": {
+  "en": "The <b>“Added”</b> list on the left is the stacking order. Drag a row or use ▲▼ to reorder",
+  "zh-Hans": "左边的<b>“已放入”</b>是叠放顺序。拖动行或用▲▼调整上下",
+  "zh-Hant": "左邊的<b>「已放入」</b>是疊放順序。拖動列或用▲▼調整上下",
+  "ko": "왼쪽 <b>‘넣은 것’</b>은 겹치는 순서예요. 행을 드래그하거나 ▲▼로 순서를 바꿀 수 있어요"
+ },
+ "左の<b>「いれたもの」</b>は重なり順。行を長押ししてから動かすか▲▼で上下を入れかえられるよ": {
+  "en": "The <b>“Added”</b> list on the left is the stacking order. Long-press a row and move it, or use ▲▼ to reorder",
+  "zh-Hans": "左边的<b>“已放入”</b>是叠放顺序。长按行后拖动或用▲▼调整上下",
+  "zh-Hant": "左邊的<b>「已放入」</b>是疊放順序。長按列後拖動或用▲▼調整上下",
+  "ko": "왼쪽 <b>‘넣은 것’</b>은 겹치는 순서예요. 행을 길게 누른 뒤 움직이거나 ▲▼로 순서를 바꿀 수 있어요"
+ },
+ "<b>ドレッシング</b>をえらんで、ボウルを<b>マウスでなぞって</b>かけよう。かけた量がグラム数になるよ": {
+  "en": "Pick a <b>dressing</b> and <b>trace over the bowl with the mouse</b> to pour it. The amount you pour becomes the grams",
+  "zh-Hans": "选好<b>酱汁</b>，<b>用鼠标在碗上描画</b>来淋上。淋的量就是克数",
+  "zh-Hant": "選好<b>醬汁</b>，<b>用滑鼠在碗上描畫</b>來淋上。淋的量就是克數",
+  "ko": "<b>드레싱</b>을 골라 볼 위를 <b>마우스로 따라 그려서</b> 뿌려요. 뿌린 양이 그램 수가 돼요"
+ },
+ "<b>ドレッシング</b>をえらんで、ボウルを<b>指でなぞって</b>かけよう。かけた量がグラム数になるよ": {
+  "en": "Pick a <b>dressing</b> and <b>trace over the bowl with your finger</b> to pour it. The amount you pour becomes the grams",
+  "zh-Hans": "选好<b>酱汁</b>，<b>用手指在碗上描画</b>来淋上。淋的量就是克数",
+  "zh-Hant": "選好<b>醬汁</b>，<b>用手指在碗上描畫</b>來淋上。淋的量就是克數",
+  "ko": "<b>드레싱</b>을 골라 볼 위를 <b>손가락으로 따라 그려서</b> 뿌려요. 뿌린 양이 그램 수가 돼요"
+ },
+ "メーターが<b>ぜんぶ緑</b>になるように調整しよう。<br>右上が今の点数。　できたら<b>「完成！」</b>": {
+  "en": "Adjust until <b>every meter is green</b>.<br>Your score is at the top right. When you’re done, press <b>“Done!”</b>",
+  "zh-Hans": "调整到<b>所有仪表都变绿</b>。<br>右上角是当前分数。　完成后按<b>“完成！”</b>",
+  "zh-Hant": "調整到<b>所有儀表都變綠</b>。<br>右上角是目前分數。　完成後按<b>「完成！」</b>",
+  "ko": "<b>미터가 전부 초록</b>이 되도록 조절해요.<br>오른쪽 위가 지금 점수예요.　다 되면 <b>‘완성!’</b>"
  }
 }
