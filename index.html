@@ -646,7 +646,7 @@ window.BUDOUX_JA={"UW3":{"。":7360,"の":4478,"、":5467,"に":4332,"を":6132,
    ========================================================= */
 const $ = s => document.querySelector(s);
 // バージョン：更新するたびに上げる（不具合の修正＝3つ目、機能の追加＝2つ目）。CHANGELOG.md にも書く
-const VERSION='1.3.4';
+const VERSION='1.3.5';
 const UNLOCK = /[?&]unlock=1/.test(location.search);
 /* =========================================================
    多言語：日本語の文をキーにして I18N[言語] から引く（なければ日本語のまま）。README「多言語」参照
@@ -1473,14 +1473,15 @@ function makeMetrics(t,th,fillLo,mul,par,kind='main'){
   if(th.noDress)M.push({k:'dg',l:T('ドレッシング'),u:'g',type:'max',hi:0,w:1.5,dp:0});
   return M;
 }
-// force.kind：種類を指定（オリジナルのお題のひな形用）。force.size：ボウルの大きさをそのまま使う
+// force.kind：種類を指定（オリジナルのお題のひな形用）。force.size：ボウルの大きさをそのまま使う。force.diff：むずかしさを指定（お手本は変わらない）
 function makeChallenge(id,dayKey,slot,theme,size,seed,force={}){
   const R=mulberry32(seed),base=THEMES[theme];
   const autoKind=base.kind||(R()<SIDE_P[slot]?'side':'main'),kind=KINDS[force.kind]?force.kind:autoKind;
   if(kind==='side'&&!force.size)size='S';
   const n=kind==='side'?SIDE_N[size]:SIZES[size].n,[ka,kb]=KINDS[kind].kcal;
   // 同じお題でも日によって数値・むずかしさ・具材数がかわる
-  const diff=R()<.35?1:R()<.7?2:3,par={};
+  let diff=R()<.35?1:R()<.7?2:3;const par={};
+  if(DIFF_MUL[force.diff])diff=force.diff;
   if(base.simple)par.kmax=ri(R,3,5);
   const th=Object.assign({},base,kind==='side'?{st:Object.assign({},SIDE_ST,base.st)}:{},{name:base.simple?T('シンプル{0}種',par.kmax):base.name,desc:base.simple?T('具材は{0}種類まで',par.kmax):base.desc});
   let ref,t,bm=1e9;
@@ -1507,17 +1508,18 @@ function dayPlan(dayKey){
     return{theme,size:THEMES[theme].size||SLOT_SIZES[i][Math.floor(R()*SLOT_SIZES[i].length)]};
   });
 }
-// リリース直後のお題は、色あざやかなサラダになるものを選んで固定（朝・昼・夜の順。seed はお手本の組み合わせ）
+// リリース直後のお題は、色あざやかなサラダになるものを選んで固定（朝・昼・夜の順。seed はお手本の組み合わせ、diff はむずかしさ）
+// 日が進むごとに、少しずつむずかしいお題をまぜていく
 const FIXED_PLAN={
-  '2026-10-14':[{theme:'color',size:'S',seed:3484365},{theme:'cobb',size:'S',seed:3064670},{theme:'caprese',size:'S',seed:8243712}],
-  '2026-10-15':[{theme:'fruitful',size:'S',seed:1069073},{theme:'chuka',size:'M',seed:601862},{theme:'seafood',size:'S',seed:10429356}],
-  '2026-10-16':[{theme:'vitc',size:'S',seed:2835006},{theme:'nicoise',size:'M',seed:1077004},{theme:'italian',size:'S',seed:3040929}],
+  '2026-10-14':[{theme:'color',size:'S',seed:3484365,diff:1},{theme:'cobb',size:'S',seed:3064670,diff:1},{theme:'caprese',size:'S',seed:8243712,diff:2}],
+  '2026-10-15':[{theme:'fruitful',size:'S',seed:1069073,diff:2},{theme:'chuka',size:'M',seed:601862,diff:1},{theme:'seafood',size:'S',seed:10429356,diff:2}],
+  '2026-10-16':[{theme:'vitc',size:'S',seed:2835006,diff:1},{theme:'nicoise',size:'M',seed:1077004,diff:2},{theme:'italian',size:'S',seed:3040929,diff:3}],
 };
 const CH={};
 function getChallenge(dayKey,slot){
   const id=dayKey+':'+SLOTS[slot].k;if(CH[id])return CH[id];
   const p=(FIXED_PLAN[dayKey]||dayPlan(dayKey))[slot];
-  return CH[id]=makeChallenge(id,dayKey,slot,p.theme,p.size,p.seed??hashStr('ch|'+id));
+  return CH[id]=makeChallenge(id,dayKey,slot,p.theme,p.size,p.seed??hashStr('ch|'+id),{diff:p.diff});
 }
 function practiceChallenge(seed){
   if(seed==null)seed=(Math.random()*1e9)>>>0;const R=mulberry32(seed),slot=Math.floor(R()*3);

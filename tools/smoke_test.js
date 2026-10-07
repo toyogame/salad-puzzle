@@ -33,7 +33,7 @@ const ok = (name, cond, info = '') => { checks.push([name, !!cond, info]); };
   ok('お題はすべて解ける', solv.bad === 0, JSON.stringify(solv));
   const hl = await p.evaluate(() => { let bad = 0; for (let d = 1; d <= 60; d++) for (let s = 0; s < 3; s++) { const ch = getChallenge('2030-02-' + (d % 28 + 1), s); if (healthMiss(ch.refT, ch.kind) > 0) bad++; } return bad; });
   ok('お題のお手本は健康的な範囲', hl === 0, 'NG ' + hl);
-  const fx = await p.evaluate(() => { const bad = []; for (const k in FIXED_PLAN) for (let s = 0; s < 3; s++) { const ch = getChallenge(k, s), t = totals(ch.layout, ch.ref.dr); useBowl(ch.bs); t.fill = coverageOf(ch.layout, ch.sig); useBowl(1); if (ch.theme !== FIXED_PLAN[k][s].theme || !THEMES[ch.theme].slots.includes(s) || !scoreOf(ch, t).all || healthMiss(ch.refT, ch.kind) > 0) bad.push(ch.id); } return bad; });
+  const fx = await p.evaluate(() => { const bad = []; for (const k in FIXED_PLAN) for (let s = 0; s < 3; s++) { const ch = getChallenge(k, s), t = totals(ch.layout, ch.ref.dr); useBowl(ch.bs); t.fill = coverageOf(ch.layout, ch.sig); useBowl(1); if (ch.theme !== FIXED_PLAN[k][s].theme || ch.diff !== FIXED_PLAN[k][s].diff || !THEMES[ch.theme].slots.includes(s) || !scoreOf(ch, t).all || healthMiss(ch.refT, ch.kind) > 0) bad.push(ch.id); } return bad; });
   ok('固定のお題（リリース直後）は解けて健康的', fx.length === 0, fx.join(' '));
   const cu = await p.evaluate(() => new Promise(res => {
     const def = { n: 'テスト<b>', d: '', s: 'M', g: 2.1, m: [['kcal', 200, 350], ['p', 10, null], ['salt', null, 2], ['fill', 50, null], ['dg', null, 0]] };
